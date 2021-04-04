@@ -19,6 +19,8 @@ func main() {
 		otherToggle := true
 		last3 := ""
 		last6 := ""
+		lastAnswer := 0
+		prevAnswer := 0
 		for {
 			line := fmt.Sprintf("%d", happy)
 			lastOfLine := line[len(line)-1:]
@@ -38,13 +40,22 @@ func main() {
 				last3 = lastOfLine
 				l3, _ := strconv.Atoi(last3)
 				l6, _ := strconv.Atoi(last6)
-				g = last3 + last6 + "=" + fmt.Sprintf("%d", l3+l6)
-
+				if prevAnswer == 6 || lastAnswer == 13 {
+					fmt.Println("6 13")
+				}
+				prevAnswer = lastAnswer
+				lastAnswer = l3 + l6
+				g = last3 + last6 + "=" + fmt.Sprintf("%d", lastAnswer)
 			} else if last == "6" {
 				last6 = lastOfLine
 				l3, _ := strconv.Atoi(last3)
 				l6, _ := strconv.Atoi(last6)
-				g = last3 + last6 + "=" + fmt.Sprintf("%d", l3+l6)
+				if prevAnswer == 3 || lastAnswer == 15 {
+					fmt.Println("3 15")
+				}
+				prevAnswer = lastAnswer
+				lastAnswer = l3 + l6
+				g = last3 + last6 + "=" + fmt.Sprintf("%d", lastAnswer)
 			} else if last == "9" {
 				otherToggleCount += 1
 				if otherToggleCount == 10 {
