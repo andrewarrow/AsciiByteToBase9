@@ -34,10 +34,15 @@ func main() {
 				g = " "
 			} else if last == "3" {
 				last3 = lastOfLine
-				g = last3 + last6
+				l3, _ := strconv.Atoi(last3)
+				l6, _ := strconv.Atoi(last6)
+				g = last3 + last6 + "=" + fmt.Sprintf("%d", l3+l6)
+
 			} else if last == "6" {
 				last6 = lastOfLine
-				g = last6 + last3
+				l3, _ := strconv.Atoi(last3)
+				l6, _ := strconv.Atoi(last6)
+				g = last3 + last6 + "=" + fmt.Sprintf("%d", l3+l6)
 			} else {
 				g = "    " + lastOfLine
 			}
