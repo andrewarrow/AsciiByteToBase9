@@ -20,14 +20,24 @@ func main() {
 
 			prev = last
 			last = fmt.Sprintf("%d", AsciiByteToBase9(line))
+			g := ""
 
 			if prev == "9" && last == "1" {
 				toggle = !toggle
 			}
-			if toggle {
-				fmt.Println("forgiveness", line, "-"+last)
+			if last == "1" || last == "2" || last == "4" {
+				g = " m"
+			} else if last == "5" || last == "7" || last == "8" {
+				g = " f"
+			} else if last == "3" || last == "6" {
+				g = " ."
 			} else {
-				fmt.Println("forgiveness", line, last)
+				g = ".."
+			}
+			if toggle {
+				fmt.Println("forgiveness", line, "-"+last, g)
+			} else {
+				fmt.Println("forgiveness", line, " "+last, g)
 			}
 			happy++
 			time.Sleep(time.Second)
