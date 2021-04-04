@@ -12,9 +12,23 @@ func main() {
 		// My Function is...
 
 		// Forgiveness
+		last := ""
+		prev := ""
+		toggle := false
 		for {
 			line := fmt.Sprintf("%d", happy)
-			fmt.Println("forgiveness", line, AsciiByteToBase9(line))
+
+			prev = last
+			last = fmt.Sprintf("%d", AsciiByteToBase9(line))
+
+			if prev == "9" && last == "1" {
+				toggle = !toggle
+			}
+			if toggle {
+				fmt.Println("forgiveness", line, "-"+last)
+			} else {
+				fmt.Println("forgiveness", line, last)
+			}
 			happy++
 			time.Sleep(time.Second)
 		}
