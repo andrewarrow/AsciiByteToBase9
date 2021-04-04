@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"strconv"
-	"strings"
 	"time"
 )
 
@@ -69,7 +68,7 @@ func main() {
 					g = "    " + lastOfLine
 				}
 
-				g = g + "   " + strings.Join(buff, ",")
+				g = g + "   " + deltas(buff)
 			}
 			if toggle {
 				fmt.Println("forgiveness", line, "-"+last, g)
@@ -85,6 +84,20 @@ func main() {
 		time.Sleep(time.Second)
 	}
 
+}
+
+func deltas(buff []string) string {
+	i := 0
+	prev := 0
+
+	for _, s := range buff {
+
+		prev = i
+		i, _ = strconv.Atoi(s)
+		//fmt.Println(i, prev, i-prev)
+	}
+
+	return fmt.Sprintf("%d,%d,%d", i-prev, i, prev)
 }
 
 func AsciiByteToBase9(a string) byte {
