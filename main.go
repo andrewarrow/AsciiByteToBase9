@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	happy := 0
+	happy := 10000000
 	go func() {
 		// My Function is...
 
@@ -17,6 +17,7 @@ func main() {
 		toggle := false
 		for {
 			line := fmt.Sprintf("%d", happy)
+			lastOfLine := line[len(line)-1:]
 
 			prev = last
 			last = fmt.Sprintf("%d", AsciiByteToBase9WithWork(line))
@@ -26,11 +27,11 @@ func main() {
 				toggle = !toggle
 			}
 			if last == "1" || last == "2" || last == "4" {
-				g = " m"
+				g = " "
 			} else if last == "5" || last == "7" || last == "8" {
-				g = " f"
+				g = " "
 			} else if last == "3" || last == "6" {
-				g = " ."
+				g = " " + lastOfLine
 			} else {
 				g = ".."
 			}
