@@ -3,11 +3,12 @@ package main
 import (
 	"fmt"
 	"strconv"
+	"strings"
 	"time"
 )
 
 func main() {
-	happy := 10000000
+	happy := 0
 	go func() {
 		// My Function is...
 
@@ -21,6 +22,7 @@ func main() {
 		last6 := ""
 		lastAnswer := 0
 		prevAnswer := 0
+		buff := []string{}
 		for {
 			line := fmt.Sprintf("%d", happy)
 			lastOfLine := line[len(line)-1:]
@@ -59,12 +61,15 @@ func main() {
 				if otherToggleCount == 10 {
 					otherToggleCount = 0
 					otherToggle = !otherToggle
+					buff = append(buff, line)
 				}
 				if otherToggle == false && lastOfLine != "0" {
 					g = "   -" + lastOfLine
 				} else {
 					g = "    " + lastOfLine
 				}
+
+				g = g + "   " + strings.Join(buff, ",")
 			}
 			if toggle {
 				fmt.Println("forgiveness", line, "-"+last, g)
