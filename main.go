@@ -41,7 +41,6 @@ func main() {
 				l3, _ := strconv.Atoi(last3)
 				l6, _ := strconv.Atoi(last6)
 				if prevAnswer == 6 || lastAnswer == 13 {
-					fmt.Println("6 13")
 				}
 				prevAnswer = lastAnswer
 				lastAnswer = l3 + l6
@@ -51,7 +50,6 @@ func main() {
 				l3, _ := strconv.Atoi(last3)
 				l6, _ := strconv.Atoi(last6)
 				if prevAnswer == 3 || lastAnswer == 15 {
-					fmt.Println("3 15")
 				}
 				prevAnswer = lastAnswer
 				lastAnswer = l3 + l6
