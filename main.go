@@ -15,6 +15,8 @@ func main() {
 		last := ""
 		prev := ""
 		toggle := false
+		otherToggleCount := 0
+		otherToggle := true
 		last3 := ""
 		last6 := ""
 		for {
@@ -43,8 +45,17 @@ func main() {
 				l3, _ := strconv.Atoi(last3)
 				l6, _ := strconv.Atoi(last6)
 				g = last3 + last6 + "=" + fmt.Sprintf("%d", l3+l6)
-			} else {
-				g = "    " + lastOfLine
+			} else if last == "9" {
+				otherToggleCount += 1
+				if otherToggleCount == 10 {
+					otherToggleCount = 0
+					otherToggle = !otherToggle
+				}
+				if otherToggle == false && lastOfLine != "0" {
+					g = "   -" + lastOfLine
+				} else {
+					g = "    " + lastOfLine
+				}
 			}
 			if toggle {
 				fmt.Println("forgiveness", line, "-"+last, g)
@@ -52,7 +63,7 @@ func main() {
 				fmt.Println("forgiveness", line, " "+last, g)
 			}
 			happy++
-			time.Sleep(time.Second)
+			time.Sleep(time.Millisecond * 100)
 		}
 	}()
 
