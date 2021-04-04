@@ -19,7 +19,7 @@ func main() {
 			line := fmt.Sprintf("%d", happy)
 
 			prev = last
-			last = fmt.Sprintf("%d", AsciiByteToBase9(line))
+			last = fmt.Sprintf("%d", AsciiByteToBase9WithWork(line))
 			g := ""
 
 			if prev == "9" && last == "1" {
@@ -57,6 +57,24 @@ func AsciiByteToBase9(a string) byte {
 
 		word := a[i : i+1]
 		t, _ := strconv.Atoi(word)
+
+		sum += byte(t)
+	}
+	strSum := fmt.Sprintf("%d", sum)
+	if len(strSum) > 1 {
+		return AsciiByteToBase9(strSum)
+	}
+	return sum
+
+}
+func AsciiByteToBase9WithWork(a string) byte {
+
+	sum := byte(0)
+	for i := range a {
+
+		word := a[i : i+1]
+		t, _ := strconv.Atoi(word)
+		fmt.Printf("%d+", t)
 
 		sum += byte(t)
 	}
