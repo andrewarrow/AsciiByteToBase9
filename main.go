@@ -84,16 +84,6 @@ func main() {
 
 }
 
-/*
-	b, _ := strconv.Atoi(last)
-	if add == 9 {
-		add = 0
-	}
-	add += b
-	if add > 3 {
-		g = " " + fmt.Sprintf("%d", add)
-	}
-*/
 func AsciiByteToBase9(a string) byte {
 
 	sum := byte(0)
