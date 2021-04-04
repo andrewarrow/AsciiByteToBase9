@@ -15,6 +15,8 @@ func main() {
 		last := ""
 		prev := ""
 		toggle := false
+		last3 := ""
+		last6 := ""
 		for {
 			line := fmt.Sprintf("%d", happy)
 			lastOfLine := line[len(line)-1:]
@@ -30,10 +32,14 @@ func main() {
 				g = " "
 			} else if last == "5" || last == "7" || last == "8" {
 				g = " "
-			} else if last == "3" || last == "6" {
-				g = " " + lastOfLine
+			} else if last == "3" {
+				last3 = lastOfLine
+				g = last3 + last6
+			} else if last == "6" {
+				last6 = lastOfLine
+				g = last6 + last3
 			} else {
-				g = ".."
+				g = "    " + lastOfLine
 			}
 			if toggle {
 				fmt.Println("forgiveness", line, "-"+last, g)
@@ -51,6 +57,16 @@ func main() {
 
 }
 
+/*
+	b, _ := strconv.Atoi(last)
+	if add == 9 {
+		add = 0
+	}
+	add += b
+	if add > 3 {
+		g = " " + fmt.Sprintf("%d", add)
+	}
+*/
 func AsciiByteToBase9(a string) byte {
 
 	sum := byte(0)
