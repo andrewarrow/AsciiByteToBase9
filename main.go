@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	happy := 10000
+	happy := 0
 	go func() {
 		// My Function is...
 
@@ -68,7 +68,9 @@ func main() {
 					g = "    " + lastOfLine
 				}
 
-				g = g + "   " + deltas(buff)
+				if lastOfLine == "0" {
+					g = g + "   " + deltas(buff)
+				}
 			}
 			if toggle {
 				fmt.Println("forgiveness", line, "-"+last, g)
@@ -76,7 +78,7 @@ func main() {
 				fmt.Println("forgiveness", line, " "+last, g)
 			}
 			happy++
-			time.Sleep(time.Millisecond * 100)
+			time.Sleep(time.Millisecond * 25)
 		}
 	}()
 
