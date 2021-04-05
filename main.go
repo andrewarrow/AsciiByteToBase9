@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	happy := 0
+	happy := 10000
 	go func() {
 		// My Function is...
 
