@@ -7,17 +7,23 @@ import (
 )
 
 type Base9 struct {
-	Digit0 byte // 9^0=0
-	Digit1 byte // 9^1=9
-	Digit2 byte // 9^2=18
-	Digit3 byte // 9^3=729
-	Digit4 byte // 9^4=6561
+	Digit0 int // 9^0=0
+	Digit1 int // 9^1=9
+	Digit2 int // 9^2=18
+	Digit3 int // 9^3=729
+	Digit4 int // 9^4=6561
 }
 
 func (b *Base9) Add(a int) {
+	b.Digit0++
+	if b.Digit0 == 9 {
+		b.Digit0 = 0
+		b.Digit1++
+	}
 }
 func (b *Base9) Debug() string {
-	return "hi"
+	val := (b.Digit4 * 6561) + (b.Digit3 * 729) + (b.Digit2 * 18) + (b.Digit1 * 9) + b.Digit0
+	return fmt.Sprintf("%d %d %d %d %d = %d", b.Digit4, b.Digit3, b.Digit2, b.Digit1, b.Digit0, val)
 }
 
 func main() {
