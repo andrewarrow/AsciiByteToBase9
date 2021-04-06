@@ -41,6 +41,9 @@ func (b *Base9) Add(a int) {
 		b.Digit3 = 0
 		b.Digit4++
 	}
+	if b.Digit4 == 9 {
+		os.Exit(1)
+	}
 }
 func (b *Base3) Add(a int) {
 	b.Digit0++
@@ -78,11 +81,11 @@ func (b *Base3) Debug() string {
 }
 
 func main() {
-	b := Base3{}
+	b := Base9{}
 	go func() {
 		for {
 			fmt.Println(b.Debug())
-			time.Sleep(time.Millisecond * 100)
+			time.Sleep(time.Millisecond * 25)
 			b.Add(1)
 		}
 	}()
